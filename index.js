@@ -10,7 +10,8 @@ app.use(bodyParser.json());
 
 app.post("/ogorek/webhook", (req, res) => {
   let leads = req.body.user_column_data;
-  let formattedHtml;
+  let formattedHtml = "";
+
   for (let lead of leads) {
     formattedHtml += `
     <tr>
@@ -18,19 +19,21 @@ app.post("/ogorek/webhook", (req, res) => {
     </tr>
     `;
   }
+
   const htmlBody = `<table>
   <th>Lead Data</th>
   <tbody>
   ${formattedHtml}
   </tbody>
   </table>`;
-  console.log(htmlBody);
-  // mailer({
-  //   from: "ogorek@minervawebdevelopment.com",
-  //   to: "antonio@minervawebdevelopment.com",
-  //   subject: "Captured Lead Data",
-  //   body: htmlBody
-  // });
+
+  mailer({
+    from: "ogorek@minervawebdevelopment.com",
+    to: "antonio@minervawebdevelopment.com",
+    subject: "Captured Lead Data",
+    body: htmlBody
+  });
+
   res.send("received data");
 });
 
