@@ -29,7 +29,7 @@ app.post("/ogorek/webhook", (req, res) => {
 
   mailer({
     from: "automation@minervawebdevelopment.com",
-    to: "marketing@ogorek.com, operations@ogorek.com",
+    to: "marketing@ogorek.com, propser@ogorek.com, Denise.Lipka@ogorek.com",
     cc: "antonio@minervawebdevelopment.com",
     subject: "Captured Lead Data",
     body: htmlBody
