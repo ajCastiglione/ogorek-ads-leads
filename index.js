@@ -7,7 +7,8 @@ const PORT = process.env.PORT || 5000;
 app.use(bodyParser.json());
 
 app.post("/ogorek/webhook", (req, res) => {
-  console.log(req.user_column_data);
+  console.log(req.body.user_column_data);
+  res.send("received data");
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
