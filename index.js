@@ -9,15 +9,9 @@ const mailer = require("./mailer");
 app.use(bodyParser.json());
 
 app.post("/ogorek/webhook", (req, res) => {
-  console.log(req.body.user_column_data);
-  let dummyArr = [
-    { column_name: "Full Name", string_value: "FirstName LastName" },
-    { column_name: "User Email", string_value: "test@example.com" },
-    { column_name: "User Phone", string_value: "+16505550123" }
-  ];
-  // let lead = req.body.user_column_data[0];
+  let leads = req.body.user_column_data;
   let formattedHtml;
-  for (lead of dummyArr) {
+  for (let lead of leads) {
     formattedHtml += `
     <tr>
     <td>${lead.column_name}:</td><td>${lead.string_value}</td>
