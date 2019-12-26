@@ -20,22 +20,23 @@ app.post("/ogorek/webhook", (req, res) => {
   for (lead of dummyArr) {
     formattedHtml += `
     <tr>
-    <td>${lead.column_name}</td><td>${lead.string_value}</td>
+    <td>${lead.column_name}:</td><td>${lead.string_value}</td>
     </tr>
     `;
   }
   const htmlBody = `<table>
-  <thead>Lead Data</thead>
+  <th>Lead Data</th>
   <tbody>
   ${formattedHtml}
   </tbody>
   </table>`;
-  mailer({
-    from: "ogorek@minervawebdevelopment.com",
-    to: "antonio@minervawebdevelopment.com",
-    subject: "Captured Lead Data",
-    body: htmlBody
-  });
+  console.log(htmlBody);
+  // mailer({
+  //   from: "ogorek@minervawebdevelopment.com",
+  //   to: "antonio@minervawebdevelopment.com",
+  //   subject: "Captured Lead Data",
+  //   body: htmlBody
+  // });
   res.send("received data");
 });
 
